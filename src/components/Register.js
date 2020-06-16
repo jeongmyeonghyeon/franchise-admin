@@ -90,12 +90,10 @@ const Register = (props) => {
   }
 
   const onChangeInstallationRequestdDate = value => {
-    console.log(value)
     form.setFieldsValue({installationRequestdDate: value})
   }
 
   const onChangeShopOpenDate = value => {
-    console.log(value)
     form.setFieldsValue({shopOpenDate : value})
   }
 
