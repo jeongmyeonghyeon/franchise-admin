@@ -13,7 +13,7 @@ const Register = (props) => {
   const {state, dispatch} = useStore();
   const [form] = Form.useForm();
 
-  // console.log('====================')
+  // console.log('====================Register')
   // console.log(state)
   // console.log('====================')
 
@@ -29,16 +29,15 @@ const Register = (props) => {
       memo: "메모",
       modified: new Date().toISOString(),
       name: values.name,
-      personSet: {id: 1, name: values.personSetName, phonenumber: values.personSetPhoneNumber},
-      // personSetName: values.personSetName,
-      // personSetPhoneNumber: values.personSetPhoneNumber,
+      personSet: {id: 1, name: values.personSetName, phonenumber: values.personSetPhonenumber},
+      personSetName: values.personSetName,
+      personSetPhoneNumber: values.personSetPhonenumber,
       register: {id: 1, name: values.registerName, phonenumber: values.registerPhonenumber},
       registerType: values.registerType,
       registrationContact: values.registrationContact,
       status: "pending",
     }
     result.records = {...result}
-
     dispatch({type: ADD_FRANCHISE_REQUEST, data: result})
     props.history.replace('/')
   };

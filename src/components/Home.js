@@ -29,10 +29,6 @@ const Home = (props) => {
 
   const {state, dispatch} = useStore();
 
-  // console.log('====================')
-  // console.log(state)
-  // console.log('====================')
-
   const searchInput = useRef(null)
 
   useEffect(() => {
@@ -46,18 +42,13 @@ const Home = (props) => {
       .then((res) => {
         const {data: {results}} = res;
         results.map((v) => {
-          v.records = {...v}
           v.key = v.id;
           v.personSetName = v.personSet.name;
           v.personSetPhoneNumber = v.personSet.phonenumber;
+          v.records = {...v}
           return false;
         });
         dispatch({type: LOAD_FRANCHISE_LIST_REQUEST, data: results})
-
-        // console.log('====================')
-        // console.log(results)
-        // console.log('====================')
-
       })
       .catch((err) => {
         console.log(err);
@@ -114,6 +105,11 @@ const Home = (props) => {
     ),
     filterIcon: filtered => <SearchOutlined style={{color: filtered ? '#1890ff' : undefined}}/>,
     onFilter: (value, record) => {
+      // console.log('value: ', value)
+      // console.log('record: ', record)
+      // console.log('dataIndex: ', dataIndex)
+      // console.log(record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()))
+      // debugger
       return record[dataIndex].toString().toLowerCase().includes(value.toLowerCase())
     },
     onFilterDropdownVisibleChange: visible => {
@@ -186,11 +182,12 @@ const Home = (props) => {
     {
       title: '대표자명',
       dataIndex: 'records',
+      key: 'personSetName',
       width: 120,
       ellipsis: true,
       filteredValue: filteredInfo && (filteredInfo.personSetName || null),
       ...getColumnSearchProps('personSetName'),
-      render: record => (<Text strong>{record.personSet.name}</Text>),
+      render: record => (<Text strong>{record.personSetName}</Text>),
     },
     {
       title: '대표자 연락처',
@@ -199,7 +196,7 @@ const Home = (props) => {
       width: 150,
       filteredValue: filteredInfo && (filteredInfo.personSetPhoneNumber || null),
       ...getColumnSearchProps('personSetPhoneNumber'),
-      render: record => (<Text strong>{record.personSet.phonenumber}</Text>),
+      render: record => (<Text strong>{record.personSetPhoneNumber}</Text>),
     },
     {
       title: '진행상태',
@@ -226,8 +223,6 @@ const Home = (props) => {
       ],
       filteredValue: filteredInfo && (filteredInfo.status || null),
       onFilter: (value, record) => {
-        console.log('진행상태 value: ', value)
-        console.log('진행상태 record: ', record.status)
         return record.status.includes(value)
       },
       render: record => (siwtchStatus(record.id, record.status))
