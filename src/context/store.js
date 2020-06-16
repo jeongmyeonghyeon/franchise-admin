@@ -13,8 +13,6 @@ export const reducer = (state, action) => {
   console.log(action.type)
   switch (action.type) {
     case ADD_FRANCHISE_REQUEST:
-      console.log(state)
-      console.log(action)
       return {
         franchiseList: [action.data, ...state.franchiseList]
       }

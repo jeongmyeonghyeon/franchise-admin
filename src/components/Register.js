@@ -18,7 +18,27 @@ const Register = (props) => {
   console.log('====================')
 
   const onFinish = values => {
-    dispatch({type: ADD_FRANCHISE_REQUEST, data: values})
+    const result = {
+      id: 16,
+      businessNumber: values.businessNumber,
+      created: new Date().toISOString(),
+      email: values.email,
+      installationAddress: values.installationAddress,
+      installationRequestedDate: values.installationRequestdDate.format(),
+      memo: "메모",
+      modified: new Date().toISOString(),
+      name: values.name,
+      personSet: {id: 1, name: values.personSetName, phonenumber: values.personSetPhoneNumber},
+      // personSetName: values.personSetName,
+      // personSetPhoneNumber: values.personSetPhoneNumber,
+      register: {id: 1, name: values.registerName, phonenumber: values.registerPhonenumber},
+      registerType: values.registerType,
+      registrationContact: values.registrationContact,
+      status: "pending",
+    }
+
+    // dispatch({type: ADD_FRANCHISE_REQUEST, data: result})
+    // props.history.replace('/')
   };
 
   const onFinishFailed = errorInfo => {
@@ -67,12 +87,14 @@ const Register = (props) => {
     form.setFieldsValue({registerType: value})
   }
 
-  const onChangeRequestdDate = value => {
-    form.setFieldsValue({onChangeRequestdDate: value.format()})
+  const onChangeInstallationRequestdDate = value => {
+    console.log(value)
+    form.setFieldsValue({installationRequestdDate: value})
   }
 
   const onChangeShopOpenDate = value => {
-    form.setFieldsValue({onChangeRequestdDate: value.format()})
+    console.log(value)
+    form.setFieldsValue({shopOpenDate : value})
   }
 
   return (
@@ -278,7 +300,7 @@ const Register = (props) => {
             <DatePicker
               showTime
               format="YYYY-MM-DD HH:mm"
-              onChange={onChangeRequestdDate}
+              onChange={onChangeInstallationRequestdDate}
             />
           </Form.Item>
         </Col>

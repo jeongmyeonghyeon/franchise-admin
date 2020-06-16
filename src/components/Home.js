@@ -29,9 +29,9 @@ const Home = (props) => {
 
   const {state, dispatch} = useStore();
 
-  console.log('====================')
-  console.log(state)
-  console.log('====================')
+  // console.log('====================')
+  // console.log(state)
+  // console.log('====================')
 
   const searchInput = useRef(null)
 
@@ -51,6 +51,11 @@ const Home = (props) => {
           return false;
         });
         dispatch({type: LOAD_FRANCHISE_LIST_REQUEST, data: results})
+
+        console.log('====================')
+        console.log(results)
+        console.log('====================')
+
       })
       .catch((err) => {
         console.log(err);
