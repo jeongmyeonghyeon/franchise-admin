@@ -1,0 +1,36 @@
+.ant-layout {
+  background: #ffffff !important;
+}
+.site-layout-content {
+  background: #fff;
+  padding: 24px;
+  min-height: 280px;
+}
+#components-layout-top {
+  margin-bottom: 0px;
+}
+#components-layout-top .logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+  float: left;
+}
+
+#components-layout-top .registerButton {
+  float: right;
+}
+
+.ant-menu-submenu > .ant-menu {
+  border-radius: 0px 0px 2px 2px !important;
+  margin-top: -7px;
+}
+
+.ant-menu-submenu > .ant-menu > .ant-menu-item {
+  margin: 0 !important;
+}
+
+/*.ant-table-thead > tr > th {*/
+/*  font-weight: 600 !important;*/
+/*}*/
+
