@@ -1,3 +1,13 @@
+**프로젝트 localhost 실행**
+
+````
+git clone https://github.com/jeongmyeonghyeon/franchise-admin.git
+cd franchise-admin
+npm i
+npm start
+
+````
+
 **프로젝트 구조**
 
 ```
