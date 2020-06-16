@@ -36,7 +36,9 @@ const Home = (props) => {
   const searchInput = useRef(null)
 
   useEffect(() => {
-    fetchFranchiseList();
+    if (state.franchiseList.length === 0) {
+      fetchFranchiseList();
+    }
   }, []);
 
   const fetchFranchiseList = async () => {
@@ -52,9 +54,9 @@ const Home = (props) => {
         });
         dispatch({type: LOAD_FRANCHISE_LIST_REQUEST, data: results})
 
-        console.log('====================')
-        console.log(results)
-        console.log('====================')
+        // console.log('====================')
+        // console.log(results)
+        // console.log('====================')
 
       })
       .catch((err) => {

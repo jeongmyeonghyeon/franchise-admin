@@ -13,13 +13,14 @@ const Register = (props) => {
   const {state, dispatch} = useStore();
   const [form] = Form.useForm();
 
-  console.log('====================')
-  console.log(state)
-  console.log('====================')
+  // console.log('====================')
+  // console.log(state)
+  // console.log('====================')
 
   const onFinish = values => {
     const result = {
       id: 16,
+      key: 16,
       businessNumber: values.businessNumber,
       created: new Date().toISOString(),
       email: values.email,
@@ -36,9 +37,10 @@ const Register = (props) => {
       registrationContact: values.registrationContact,
       status: "pending",
     }
+    result.records = {...result}
 
-    // dispatch({type: ADD_FRANCHISE_REQUEST, data: result})
-    // props.history.replace('/')
+    dispatch({type: ADD_FRANCHISE_REQUEST, data: result})
+    props.history.replace('/')
   };
 
   const onFinishFailed = errorInfo => {
