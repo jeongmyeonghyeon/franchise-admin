@@ -14,13 +14,14 @@ const Register = (props) => {
   const [form] = Form.useForm();
 
   // console.log('====================Register')
-  // console.log(state)
+  // console.log(state.franchiseList.length + 1)
   // console.log('====================')
 
   const onFinish = values => {
+    const idx = state.franchiseList.length + 1
     const result = {
-      id: 16,
-      key: 16,
+      id: idx,
+      key: idx,
       businessNumber: values.businessNumber,
       created: new Date().toISOString(),
       email: values.email,
